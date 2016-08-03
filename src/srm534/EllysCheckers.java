@@ -21,67 +21,66 @@ import java.util.Map;
 
 public class EllysCheckers {
     private static Map<Integer, Boolean> map = new HashMap<Integer, Boolean>();
-
-    private int hash(String board){
-        int ret  = 0;
-        for (int i = 0; i < board.length(); ++i){
-            if (board.charAt(i) == '.'){
-                ret = ret * 2;
-            }else{
-                ret = ret * 2 + 1;
-            }
-        }
-        return ret;
-    }
-
-    private boolean isChess(int board, int index){
-        return (board & (1 << index)) > 0;
-    }
-
-    private boolean canWin(int board, int length){
-        if (map.containsKey(board)){
-            return map.get(board);
-        }else{
-            //System.out.println(board + "  " + length);
-            //ÄÜ¹»µ½´ï±Ø°ÜÌ¬µÄÒ»¶¨ÊÇ±ØÊ¤Ì¬, µ½´ï²»ÁË±ØÊ¤Ì¬µÄ, ¾ÍÊÇ±Ø°ÜÌ¬.
-            boolean reachLoseGame = false;
-            //ÏñÓÒÒÆ¶¯Ò»Î»
-            for (int i = length - 1; i > 0; --i){
-                if (isChess(board, i)){
-                    //ÓÒ±ßÃ»Æå×Ó»òÕßÓÒ±ßÊÇ×îºóÒ»Î»
-                    if (i - 1 == 0 || !isChess(board, i - 1)){
-                        if (!canWin(board ^ (1 << i) | (1 <<(i - 1)), length)){
-                            reachLoseGame = true;
-                        }
-                    }
-
-                    //ÓÒ±ßÁ½¸öÆå×Ó,²¢ÇÒµÚ3Î»Îª¿Õ¸ñ »òÕß ÊÇ×îºóÒ»Î»
-                    if (i > 2 && isChess(board, i - 1) && isChess(board, i - 2)){
-                        if (i - 3 == 0 || !isChess(board, i - 3)){
-                            if (!canWin(board ^ (1 << i) | (1 << (i - 3)), length)){
-                                reachLoseGame = true;
-                            }
-                        }
-                    }
-                }
-            }
-            map.put(board, reachLoseGame);
-            return reachLoseGame;
-        }
-    }
-
-    public String getWinner(String board){
-        map.clear();
-        map.put(1, false);
-        if (canWin(hash(board), board.length())){
-            return "YES";
-        }else{
-            return "NO";
-        }
-    }
+//
+//    private int hash(String board){
+//        int ret  = 0;
+//        for (int i = 0; i < board.length(); ++i){
+//            if (board.charAt(i) == '.'){
+//                ret = ret * 2;
+//            }else{
+//                ret = ret * 2 + 1;
+//            }
+//        }
+//        return ret;
+//    }
+//
+//    private boolean isChess(int board, int index){
+//        return (board & (1 << index)) > 0;
+//    }
+//
+//    private boolean canWin(int board, int length){
+//        if (map.containsKey(board)){
+//            return map.get(board);
+//        }else{
+//            //ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Ì¬ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç±ï¿½Ê¤Ì¬, ï¿½ï¿½ï¿½ï²»ï¿½Ë±ï¿½Ê¤Ì¬ï¿½ï¿½, ï¿½ï¿½ï¿½Ç±Ø°ï¿½Ì¬.
+//            boolean reachLoseGame = false;
+//            //ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ò»Î»
+//            for (int i = length - 1; i > 0; --i){
+//                if (isChess(board, i)){
+//                    //ï¿½Ò±ï¿½Ã»ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Î»
+//                    if (i - 1 == 0 || !isChess(board, i - 1)){
+//                        if (!canWin(board ^ (1 << i) | (1 <<(i - 1)), length)){
+//                            reachLoseGame = true;
+//                        }
+//                    }
+//
+//                    //ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Òµï¿½3Î»Îªï¿½Õ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Î»
+//                    if (i > 2 && isChess(board, i - 1) && isChess(board, i - 2)){
+//                        if (i - 3 == 0 || !isChess(board, i - 3)){
+//                            if (!canWin(board ^ (1 << i) | (1 << (i - 3)), length)){
+//                                reachLoseGame = true;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            map.put(board, reachLoseGame);
+//            return reachLoseGame;
+//        }
+//    }
+//
+//    public String getWinner(String board){
+//        map.clear();
+//        map.put(1, false);
+//        if (canWin(hash(board), board.length())){
+//            return "YES";
+//        }else{
+//            return "NO";
+//        }
+//    }
 
     public static void main(String args[]){
         String test1 = ".o...ooo..oo..";
-        System.out.print(new EllysCheckers().getWinner(test1));
+        System.out.print(        Long.MAX_VALUE);
     }
 }
