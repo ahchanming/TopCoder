@@ -10,13 +10,13 @@ public class CreatePairs {
     int f[] = new int[100];
     int findF(int x, int[] data){
         if (f[x] != Integer.MIN_VALUE){
-            return f[x];
+            return f[x]; //如果已经得到结果直接返回
         }
-        if (x == 0){
+        if (x == 0){ //边界处理
             f[x] = data[0];
-        }else if (x == 1){
+        }else if (x == 1){ //边界处理
             f[x] = Math.max(data[1] + data[0], data[0] * data[1]);
-        }else{
+        }else{ //递归处理转移方程
             f[x] = Math.max(findF(x - 1, data) + data[x], findF(x- 2, data) + data[x] * data[x - 1]);
         }
         return f[x];
