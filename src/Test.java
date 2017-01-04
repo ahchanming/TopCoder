@@ -1,6 +1,11 @@
 import SRM369.JumpingBoard;
 import SRM369.PirateTreasure;
 import SRM369.TurningLightOn;
+import srm370.Containers;
+import srm370.DrawingMarbles;
+import srm371.ChessMatchup;
+import srm371.FloodRelief;
+import srm371.SpiralRoute;
 
 /**
  * Created by opq.chen on 2016/12/10.
@@ -8,11 +13,50 @@ import SRM369.TurningLightOn;
 
 public class Test {
     public static void main(String arg[]){
-        new Test().SRM369_2_900();
+        //new Test().SRM371_2_1000();
+        new Test().SRM371_1_500();
+        //new Test().SRM370_2_500();
+        //System.out.println(Long.MAX_VALUE);
+        /// /new Test().SRM370_2_250();
+        //new Test().SRM369_2_900();
         //new Test().SRM369_2_500();
         //new Test().SRM369();
     }
 
+    public void SRM371_1_500(){
+        int[] us = {1, 10, 7, 4};
+        int[] them = {15, 3, 8, 7};
+        System.out.println(new ChessMatchup().maximumScore(us, them));
+    }
+
+    public void SRM371_2_1000(){
+        String[] heights = {"ccccccccccc",
+                "caaaaaaaaac",
+                "caaaaaaaaac",
+                "caazpppzaac",
+                "caapdddpaac",
+                "caapdddpaac",
+                "caapdddpaac",
+                "caazpppzaac",
+                "caaaaaaaaac",
+                "caaaaaaaaac",
+                "ccccccccccc"};
+        System.out.println(new FloodRelief().minimumPumps(heights));
+    }
+
+    public void SRM371_2_500(){
+        System.out.println(new SpiralRoute().thronePosition(12, 50));
+    }
+    public void SRM370_2_500(){
+        int[] color = { 12, 2, 34, 13, 17 };
+        System.out.println(new DrawingMarbles().sameColor(color, 4));
+    }
+
+    public void SRM370_2_250(){
+        int[] con = {5,5,5};
+        int[] pac = {5,5,5};
+        System.out.print(new Containers().wastedSpace(con, pac));
+    }
     public void SRM369_2_900(){
 //        String[] board = {"3942178",
 //                "1234567",

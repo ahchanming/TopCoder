@@ -12,7 +12,6 @@ public class JumpingBoard {
     private final static int HOLE =24;
 
     private void DFS(int dep, int x, int y){
-        //System.out.println(dep + " " + x + " " + y);
         if (ans == -1){
             return;
         }else if (dep > ans){
