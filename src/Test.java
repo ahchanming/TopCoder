@@ -7,14 +7,18 @@ import srm371.ChessMatchup;
 import srm371.FloodRelief;
 import srm371.SpiralRoute;
 
+import java.util.Calendar;
+
 /**
  * Created by opq.chen on 2016/12/10.
  */
 
 public class Test {
     public static void main(String arg[]){
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(formatCalendarToyyyyMMdd(calendar));
         //new Test().SRM371_2_1000();
-        new Test().SRM371_1_500();
+        //new Test().SRM371_1_500();
         //new Test().SRM370_2_500();
         //System.out.println(Long.MAX_VALUE);
         /// /new Test().SRM370_2_250();
@@ -23,6 +27,12 @@ public class Test {
         //new Test().SRM369();
     }
 
+    public static String formatCalendarToyyyyMMdd(Calendar c) {
+
+        return new StringBuffer().append(c.get(Calendar.YEAR)).append("-")
+                .append(c.get(Calendar.MONTH) + 1).append("-")
+                .append(c.get(Calendar.DATE)).toString();
+    }
     public void SRM371_1_500(){
         int[] us = {1, 10, 7, 4};
         int[] them = {15, 3, 8, 7};
