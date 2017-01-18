@@ -1,11 +1,9 @@
-package facebookRound1;
+package hackcup2017.round1;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
