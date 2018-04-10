@@ -1,0 +1,13 @@
+package work;
+
+public class OrderPush {
+    private static String originStr = "3200818|180407819504883733,3203960|180408811384031479,3203969|180408811400874810,3204030|180408811484903154,3204479|180408813222486805,3204622|180408813474553739,3204849|180408814350950715,3204997|180408815092748676,3205500|180408816395301344,3206152|180408818464911842,3206251|180408818562011471,3206582|180408819311065543,3206662|180408819422009535,3206663|180408819422036948,3206852|180408820042783133,3206972|180408820192146627,3207075|180408820301546423,3207429|180408821122802550,3207877|180408822062713683,3208186|180408822455919204,3208629|180408823461687212";
+    private static String sql = "insert into order_push (order_id, order_sn, trade_type, type, delivery_channel, customs_status, goms_status, customs_push_status, customs_push_time, gmt_created, gmt_modified) values (%s, %s, 2, 1, 1, 19101, 0, 1, now(), now(), now());";
+    public static void main(String[] args) {
+        String orders[] = originStr.split(",");
+        for (String each : orders){
+            String[] eles = each.split("\\|");
+            System.out.println(String.format(sql, eles[0], eles[1]));
+        }
+    }
+}
