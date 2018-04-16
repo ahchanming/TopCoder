@@ -3,6 +3,12 @@ package srm700;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * N个房间，每个房间有S个人
+ * 每个人都有一个排名，不存在两个人的排名相同。
+ * 现在按照房间顺序把第一名取出来
+ * 问总共有多少种不同的队列。
+ */
 public class XYZCoder {
     static int MOD = 1000000007;
 
